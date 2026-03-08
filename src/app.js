@@ -1,6 +1,7 @@
 const express = require("express");
 const app = express();
 
+
 // Permite que a API leia o req.body em formato JSON!
 app.use(express.json());
 

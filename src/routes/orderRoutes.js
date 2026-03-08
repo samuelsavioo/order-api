@@ -9,18 +9,18 @@ const router = express.Router();
 const orderController = require("../controllers/OrderController");
 
 // Rota POST: Usada para CRIAR (salvar) um novo pedido no banco.
-router.post("/orders", orderController.createOrder);
+router.post("/order", orderController.createOrder);
 
 // Rota GET: Usada para LISTAR os pedidos (aqui funciona a paginação).
-router.get("/orders", orderController.getOrders);
+router.get("/order", orderController.getOrder);
 
 // Rota GET (com parâmetro dinâmico): Usada para BUSCAR um pedido específico.
-router.get("/orders/:id", orderController.getOrderById);
+router.get("/order/:id", orderController.getOrderById);
 
 // Rota DELETE: Usada para REMOVER um pedido específico pelo ID.
-router.delete("/orders/:id", orderController.deleteOrder);
+router.delete("/order/:id", orderController.deleteOrder);
 // Rota PUT: Usada para ATUALIZAR os dados de um pedido existente pelo ID.
-router.put("/orders/:id", orderController.updateOrder);
+router.put("/order/:id", orderController.updateOrder);
 
 
 // Exporta este roteador configurado para que ele possa ser "plugado" 

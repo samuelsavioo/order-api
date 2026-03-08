@@ -37,7 +37,7 @@ exports.createOrder = async (req, res) => {
 /**
  * Retorna uma lista paginada de todos os pedidos.
  */
-exports.getOrders = async (req, res) => {
+exports.getOrder = async (req, res) => {
     try {
 
         // Define a página e o limite de itens por página usando os parâmetros da URL (query)
@@ -61,7 +61,7 @@ exports.getOrders = async (req, res) => {
             total, // Total de itens no banco
             page, // Página atual
             totalPages: Math.ceil(total / limit), // Arredonda para cima para obter o total de páginas
-            data: orders // O array de pedidos da página atual
+            data: order // O array de pedidos da página atual
         });
 
     } catch (error) {

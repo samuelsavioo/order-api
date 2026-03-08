@@ -3,7 +3,11 @@
 const mongoose = require("mongoose");
 
 //Inicia a conexão com o banco de dados MongoDB.
-mongoose.connect(process.env.DATABASE_URL);
+mongoose.connect(process.env.DATABASE_URL)
+  .then(() => console.log("MongoDB conectado"))
+  .catch(err => console.error("Erro MongoDB:", err));
+
+module.exports = mongoose;
 
 // Armazena a instância da conexão atual em uma variável para facilitar 
 // a escuta de eventos (como sucesso ou falha na conexão).

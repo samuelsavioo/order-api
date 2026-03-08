@@ -9,7 +9,13 @@ exports.createOrder = async (req, res) => {
     // Extrai os dados do corpo da requisição
     try {
 
-        const { numeroPedido, valorTotal, dataCriacao, items } = req.body;
+        const { numeroPedido, dataCriacao, items } = req.body;
+
+        if (!items || !Array.isArray(items)) {
+            return res.status(400).json({
+                error: "Items deve ser um array"
+            });
+        }
 
         // Mapeia o array de itens, traduzindo os nomes das propriedades para o formato do Schema
         const mappedItems = items.map(item => ({
@@ -18,11 +24,17 @@ exports.createOrder = async (req, res) => {
             price: item.valorItem
         }));
 
+        // calcula o valor total
+        const totalValue = mappedItems.reduce(
+            (acc, item) => acc + item.price * item.quantity,
+            0
+        );
+
         // Cria e salva o pedido no banco de dados
-        const order = await Order.create({
+            const order = await Order.create({
             orderId: numeroPedido,
-            value: valorTotal,
-            creationDate: dataCriacao,
+            value: totalValue,
+            creationDate: dataCriacao || new Date(),
             items: mappedItems
         });
 

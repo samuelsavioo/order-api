@@ -40,7 +40,7 @@ Clone o repositório:
 
 Entre na pasta do projeto:
 
-    cd orders-api
+    cd order-api
 
 Instale as dependências:
 
@@ -54,7 +54,7 @@ Certifique-se de que o MongoDB esteja rodando localmente ou utilize MongoDB Atla
 
 Exemplo de string de conexão:
 
-`mongodb://localhost:27017/orders`
+`mongodb://localhost:27017/order`
 
 ---
 
@@ -80,7 +80,7 @@ A aplicação iniciará em:
 
 Endpoint:
 
-`POST /orders`
+`POST api-v1/order`
 
 Exemplo de body:
 
@@ -108,7 +108,7 @@ O valor total do pedido é calculado automaticamente pela API.
 
 Endpoint:
 
-`GET /orders?page=1&limit=10`
+`GET api-v1/order?page=1&limit=10`
 
 Parâmetros:
 
@@ -130,11 +130,11 @@ Exemplo de resposta:
 
 Endpoint:
 
-`GET /orders/:id`
+`GET api-v1/order:id`
 
 Exemplo:
 
-`GET /orders/12345`
+`GET api-v1/order12345`
 
 ---
 
@@ -142,7 +142,7 @@ Exemplo:
 
 Endpoint:
 
-`PUT /orders/:id`
+`PUT api-v1/order/:id`
 
 Exemplo de body:
 
@@ -164,7 +164,7 @@ O valor total do pedido será recalculado automaticamente.
 
 Endpoint:
 
-`DELETE /orders/:id`
+`DELETE /api-v1/order/:id`
 
 Resposta:
 

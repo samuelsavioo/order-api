@@ -1,4 +1,4 @@
-# 📦 Orders API
+# 📦 Order API
 
 API REST para gerenciamento de pedidos desenvolvida com **Node.js**, **Express** e **MongoDB**.
 

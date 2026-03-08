@@ -5,6 +5,8 @@ API REST para gerenciamento de pedidos desenvolvida com **Node.js**, **Express**
 A aplicação permite criar, listar, consultar, atualizar e remover pedidos.  
 O valor total do pedido é calculado automaticamente com base nos itens enviados.
 
+A API também possui autenticação básica utilizando JWT para proteger rotas.
+
 ---
 
 # 🚀 Tecnologias Utilizadas
@@ -13,6 +15,7 @@ O valor total do pedido é calculado automaticamente com base nos itens enviados
 - Express
 - MongoDB
 - Mongoose
+- JSON Web Token (JWT)
 - JavaScript
 
 ---
@@ -130,11 +133,11 @@ Exemplo de resposta:
 
 Endpoint:
 
-`GET api-v1/order:id`
+`GET api-v1/order/:id`
 
 Exemplo:
 
-`GET api-v1/order12345`
+`GET api-v1/order/12345`
 
 ---
 
@@ -174,6 +177,34 @@ Resposta:
 
 ---
 
+# 🔐 Autenticação
+
+A API utiliza autenticação baseada em JWT (JSON Web Token).
+
+**Login**
+Endpoint:
+
+`POST /login`
+
+Body:
+
+    {
+      "username": "admin",
+      "password": "123456"
+    }
+
+Resposta:
+
+    {
+      "token": "jwt_token_aqui"
+    }
+
+Para acessar rotas protegidas, envie o token no header:
+
+`Authorization: Bearer seu_token_aqui`
+
+---
+
 # 📊 Regras de Negócio
 
 - O valor total do pedido é calculado automaticamente
@@ -189,7 +220,6 @@ Resposta:
 # 📌 Melhorias Futuras
 
 - Validação de dados com Joi ou Zod
-- Autenticação com JWT
 - Documentação com Swagger
 - Testes automatizados
 - Filtros e ordenação na listagem

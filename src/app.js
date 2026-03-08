@@ -1,5 +1,6 @@
 const express = require("express");
 const app = express();
+const authRoutes = require("./routes/authRoutes");
 
 
 // Permite que a API leia o req.body em formato JSON!
@@ -13,3 +14,5 @@ app.use("/api-v1", orderRoutes);
 
 // Exporta o 'app' configurado para o server.js poder ligá-lo
 module.exports = app;
+
+app.use("/api-v1", authRoutes);

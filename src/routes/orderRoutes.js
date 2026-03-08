@@ -1,6 +1,8 @@
 // Importa o framework Express
 const express = require("express");
 
+const authMiddleware = require("../middlewares/authMiddleware");
+
 
 // Cria um roteador do Express. Ele funciona como um "mini-aplicativo"
 const router = express.Router();
@@ -9,18 +11,18 @@ const router = express.Router();
 const orderController = require("../controllers/OrderController");
 
 // Rota POST: Usada para CRIAR (salvar) um novo pedido no banco.
-router.post("/order", orderController.createOrder);
+router.post("/order", authMiddleware, orderController.createOrder);
 
 // Rota GET: Usada para LISTAR os pedidos (aqui funciona a paginação).
-router.get("/order", orderController.getOrder);
+router.get("/order", authMiddleware, orderController.getOrder);
 
 // Rota GET (com parâmetro dinâmico): Usada para BUSCAR um pedido específico.
-router.get("/order/:id", orderController.getOrderById);
+router.get("/order/:id", authMiddleware, orderController.getOrderById);
 
 // Rota DELETE: Usada para REMOVER um pedido específico pelo ID.
-router.delete("/order/:id", orderController.deleteOrder);
+router.delete("/order/:id", authMiddleware, orderController.deleteOrder);
 // Rota PUT: Usada para ATUALIZAR os dados de um pedido existente pelo ID.
-router.put("/order/:id", orderController.updateOrder);
+router.put("/order/:id", authMiddleware, orderController.updateOrder);
 
 
 // Exporta este roteador configurado para que ele possa ser "plugado" 
